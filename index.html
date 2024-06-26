@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
     <title>TestBlippar</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
@@ -91,10 +91,22 @@ ios-camera-permission="true"
 auto-scan-instruction-idle-on-desktop="Reload to detect a marker"
 
 show-guide-view="false"></script>
+<style>
+html, body {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
 
+.modal {
+  width: 50vw;
+  height: 50vh;
+  height: calc(var(--vh, 1vh) * 50);
+}
+
+</style>
   </head>
   <body class="dark">
-      <div id="unity-container" class="unity-desktop">
+      <div id="unity-container" class="unity-desktop modal">
         <canvas id="unity-canvas" style="position: absolute;"></canvas>
       </div>
 <script>
@@ -104,6 +116,13 @@ window.addEventListener("load",function() {
 		window.scrollTo(0, 1);
 	}, 0);
 });
+
+const resizeOps = () => {
+    document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
+  };
+
+resizeOps();
+window.addEventListener("resize", resizeOps);
 
 var Yrotvalue = undefined;
 var UNITYINSTANCE = undefined;
