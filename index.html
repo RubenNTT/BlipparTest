@@ -105,7 +105,7 @@ html, body {
 
 </style>
   </head>
-  <body class="dark">
+  <body class="dark" ontouchstart="toggleFullScreen()">
       <div id="unity-container" class="unity-desktop modal">
         <canvas id="unity-canvas" style="position: absolute;"></canvas>
       </div>
@@ -126,6 +126,9 @@ function toggleFullScreen() {
     doc.webkitExitFullscreen ||
     doc.msExitFullscreen;
 
+
+	requestFullScreen.call(docEl);
+/*
   if (
     !doc.fullscreenElement &&
     !doc.mozFullScreenElement &&
@@ -135,7 +138,7 @@ function toggleFullScreen() {
     requestFullScreen.call(docEl);
   } else {
     cancelFullScreen.call(doc);
-  }
+  }*/
 }
 
 /*
@@ -151,13 +154,6 @@ const resizeOps = () => {
 resizeOps();
 window.addEventListener("resize", resizeOps);
 */
-
-window.addEventListener("load",function() {
-	setTimeout(function(){
-		window.scrollTo(0, 1);
-		toggleFullScreen();
-	}, 0.1);
-});
 
 var Yrotvalue = undefined;
 var UNITYINSTANCE = undefined;
