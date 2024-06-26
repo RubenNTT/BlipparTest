@@ -151,7 +151,13 @@ const resizeOps = () => {
 resizeOps();
 window.addEventListener("resize", resizeOps);
 */
-toggleFullScreen();
+
+window.addEventListener("load",function() {
+	setTimeout(function(){
+		window.scrollTo(0, 1);
+		toggleFullScreen();
+	}, 0.1);
+});
 
 var Yrotvalue = undefined;
 var UNITYINSTANCE = undefined;
