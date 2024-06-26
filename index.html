@@ -98,6 +98,12 @@ show-guide-view="false"></script>
         <canvas id="unity-canvas" style="position: absolute;"></canvas>
       </div>
 <script>
+// Hide the address bar!
+window.addEventListener("load",function() {
+	setTimeout(function(){
+		window.scrollTo(0, 1);
+	}, 0);
+});
 
 var Yrotvalue = undefined;
 var UNITYINSTANCE = undefined;
