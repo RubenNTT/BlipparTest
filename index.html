@@ -111,6 +111,34 @@ html, body {
       </div>
 <script>
 // Hide the address bar!
+function toggleFullScreen() {
+  var doc = window.document;
+  var docEl = doc.documentElement;
+
+  var requestFullScreen =
+    docEl.requestFullscreen ||
+    docEl.mozRequestFullScreen ||
+    docEl.webkitRequestFullScreen ||
+    docEl.msRequestFullscreen;
+  var cancelFullScreen =
+    doc.exitFullscreen ||
+    doc.mozCancelFullScreen ||
+    doc.webkitExitFullscreen ||
+    doc.msExitFullscreen;
+
+  if (
+    !doc.fullscreenElement &&
+    !doc.mozFullScreenElement &&
+    !doc.webkitFullscreenElement &&
+    !doc.msFullscreenElement
+  ) {
+    requestFullScreen.call(docEl);
+  } else {
+    cancelFullScreen.call(doc);
+  }
+}
+
+/*
 window.addEventListener("load",function() {
 	setTimeout(function(){
 		window.scrollTo(0, 1);
@@ -119,10 +147,11 @@ window.addEventListener("load",function() {
 
 const resizeOps = () => {
     document.documentElement.style.setProperty("--vh", window.innerHeight * 0.01 + "px");
-  };
-
+};
 resizeOps();
 window.addEventListener("resize", resizeOps);
+*/
+toggleFullScreen();
 
 var Yrotvalue = undefined;
 var UNITYINSTANCE = undefined;
